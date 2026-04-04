@@ -42,16 +42,8 @@
       }
     });
 
-    nav.querySelectorAll('a[href^="#"]').forEach(function (link) {
-      link.addEventListener("click", function () {
-        if (window.matchMedia("(max-width: 880px)").matches) {
-          closeNav();
-        }
-      });
-    });
-
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 880) {
+      if (window.innerWidth > 900) {
         closeNav();
       }
     });
@@ -64,6 +56,9 @@
       var target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
+      if (burger && nav && window.matchMedia("(max-width: 900px)").matches) {
+        closeNav();
+      }
       var headerHeight = header ? header.offsetHeight : 0;
       var top = target.getBoundingClientRect().top + window.scrollY - headerHeight;
       window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });

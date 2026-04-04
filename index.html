@@ -7,27 +7,24 @@
   <meta name="description" content="Мультфильмы для бизнеса: детские центры, клиники, школы. Нейросети и авторский подход.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="header" id="top">
     <div class="header__inner container">
-      <a href="#top" class="logo" aria-label="САМОЛЁТ — на главную">
-        <span class="logo__mark">✈</span>
-        <span class="logo__text">САМОЛЁТ</span>
-      </a>
+      <a href="#top" class="logo">САМОЛЁТ</a>
       <nav class="nav" id="nav" aria-label="Основное меню">
         <ul class="nav__list">
-          <li><a href="#about" class="nav__link">О нас</a></li>
+          <li><a href="#about" class="nav__link">О студии</a></li>
           <li><a href="#benefits" class="nav__link">Польза</a></li>
           <li><a href="#audience" class="nav__link">Для кого</a></li>
           <li><a href="#process" class="nav__link">Этапы</a></li>
           <li><a href="#contact" class="nav__link">Контакты</a></li>
         </ul>
       </nav>
+      <a href="#contact" class="btn btn--header header__cta">Оставить заявку</a>
       <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню">
-        <span class="burger__line"></span>
         <span class="burger__line"></span>
         <span class="burger__line"></span>
       </button>
@@ -36,163 +33,128 @@
 
   <main>
     <section class="hero">
-      <div class="hero__bg" aria-hidden="true"></div>
-      <div class="container hero__grid">
+      <div class="container hero__inner">
+        <div class="hero__accent" aria-hidden="true"></div>
         <div class="hero__content reveal">
-          <p class="eyebrow">Инновации · Творчество · Забота</p>
           <h1 class="hero__title">САМОЛЁТ — студия нейро мультипликации</h1>
           <p class="hero__lead">Создаём мультики, которые помогают бизнесу говорить с детьми и родителями на языке эмоций.</p>
           <p class="hero__text">Мы объединяем технологии нейросетей и авторский подход, чтобы каждый ролик был не просто красивым, а рабочим инструментом продвижения.</p>
           <div class="hero__actions">
             <a href="#contact" class="btn btn--primary">Оставить заявку</a>
-            <a href="#examples" class="btn btn--ghost">Посмотреть примеры</a>
-          </div>
-        </div>
-        <div class="hero__visual reveal reveal--delay" aria-hidden="true">
-          <div class="hero-card">
-            <svg class="hero-illustration" viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g-sky" x1="0" y1="0" x2="400" y2="320">
-                  <stop offset="0%" stop-color="#cfe8fb"/>
-                  <stop offset="100%" stop-color="#fdf8f3"/>
-                </linearGradient>
-                <linearGradient id="g-orange" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#f8b88b"/>
-                  <stop offset="100%" stop-color="#e8955c"/>
-                </linearGradient>
-              </defs>
-              <rect width="400" height="320" rx="28" fill="url(#g-sky)"/>
-              <ellipse cx="90" cy="260" rx="70" ry="18" fill="#fff" opacity="0.55"/>
-              <ellipse cx="280" cy="275" rx="95" ry="22" fill="#fff" opacity="0.45"/>
-              <path class="cloud cloud--1" d="M60 120c0-22 18-40 40-40 4-28 32-48 62-42 18-24 52-28 76-10 24-8 50 4 58 28 20 4 34 22 34 42 0 26-22 48-50 48H88c-16 0-28-12-28-28v-38z" fill="#fff" opacity="0.9"/>
-              <path class="cloud cloud--2" d="M220 70c0-16 14-30 32-30 3-22 26-38 50-33 14-18 42-21 62-8 19-6 40 3 46 22 16 3 28 16 28 32 0 20-18 36-40 36H248c-13 0-24-10-24-22V70z" fill="#fff" opacity="0.75"/>
-              <g class="plane">
-                <path d="M280 145l-85 28c-8 3-16-5-12-13l38-72c4-8 15-8 20 0l42 48c6 7 2 18-3 9z" fill="url(#g-orange)"/>
-                <path d="M195 173l52-18-30 36c-4 5-12 5-16 0l-6-18z" fill="#d97a3d"/>
-                <circle cx="248" cy="158" r="6" fill="#fff" opacity="0.9"/>
-              </g>
-              <circle class="spark spark--a" cx="120" cy="200" r="4" fill="#f4a574"/>
-              <circle class="spark spark--b" cx="320" cy="180" r="3" fill="#7eb8e0"/>
-              <circle class="spark spark--c" cx="200" cy="240" r="3" fill="#f4a574"/>
-            </svg>
-            <p class="hero-card__caption">Творчество · Технологии · Доверие</p>
+            <a href="#examples" class="btn btn--outline">Посмотреть примеры</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section section--cream" id="benefits">
+    <section class="section" id="benefits">
       <div class="container">
         <header class="section__head reveal">
+          <p class="section__label">Польза</p>
           <h2 class="section__title">Чем полезны наши мультики</h2>
-          <p class="section__subtitle">Эмоциональная коммуникация, которая работает на ваш бренд.</p>
         </header>
-        <div class="cards cards--4">
-          <article class="card reveal">
-            <div class="card__icon" aria-hidden="true">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/><path d="M12 20h16M20 12v16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </div>
-            <h3 class="card__title">Просто о сложном</h3>
-            <p class="card__text">Объясняем сложные темы просто и доброжелательно — так, чтобы и дети, и взрослые почувствовали заботу.</p>
+        <div class="grid-benefits">
+          <article class="card-min reveal">
+            <span class="card-min__index">01</span>
+            <h3 class="card-min__title">Простые объяснения</h3>
+            <p class="card-min__text">Объяснять сложные темы просто и доброжелательно.</p>
           </article>
-          <article class="card reveal">
-            <div class="card__icon" aria-hidden="true">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M8 22c4-8 12-12 20-10 4 10 2 20-6 24-8 4-18 0-22-8-2-4-2-8 0-12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M28 10l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </div>
-            <h3 class="card__title">Доверие к бренду</h3>
-            <p class="card__text">Повышаем доверие и узнаваемость: мягкий визуальный язык запоминается и ассоциируется с вашей организацией.</p>
+          <article class="card-min reveal">
+            <span class="card-min__index">02</span>
+            <h3 class="card-min__title">Доверие к бренду</h3>
+            <p class="card-min__text">Повышать доверие и узнаваемость бренда.</p>
           </article>
-          <article class="card reveal">
-            <div class="card__icon" aria-hidden="true">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M10 28c6-8 14-12 22-10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="14" cy="14" r="4" stroke="currentColor" stroke-width="2"/><circle cx="26" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg>
-            </div>
-            <h3 class="card__title">Вовлечение в историю</h3>
-            <p class="card__text">Вовлекаем детей и родителей в вашу историю через образы, юмор и тёплую атмосферу.</p>
+          <article class="card-min reveal">
+            <span class="card-min__index">03</span>
+            <h3 class="card-min__title">Вовлечение в историю</h3>
+            <p class="card-min__text">Вовлекать детей и родителей в вашу историю.</p>
           </article>
-          <article class="card reveal">
-            <div class="card__icon" aria-hidden="true">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 8l3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-            </div>
-            <h3 class="card__title">Позитивный имидж</h3>
-            <p class="card__text">Создаём позитивный имидж организации — вас воспринимают как тех, кто по-настоящему думает об аудитории.</p>
+          <article class="card-min reveal">
+            <span class="card-min__index">04</span>
+            <h3 class="card-min__title">Позитивный имидж</h3>
+            <p class="card-min__text">Создавать позитивный имидж организации.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="audience">
+    <section class="section section--muted" id="audience">
       <div class="container">
-        <header class="section__head reveal">
+        <header class="section__head section__head--wide reveal">
+          <p class="section__label">Аудитория</p>
           <h2 class="section__title">Для кого мы работаем</h2>
-          <p class="section__subtitle">Помогаем организациям выстраивать эмоциональную коммуникацию с детьми и родителями через мультфильмы — от идеи до готового ролика.</p>
+          <p class="section__intro">Помогаем выстраивать эмоциональную коммуникацию с детьми и родителями через мультфильмы — от задачи до готового ролика.</p>
         </header>
-        <div class="tiles">
-          <div class="tile reveal"><span class="tile__emoji" aria-hidden="true">🎨</span><h3 class="tile__title">Детские центры</h3><p class="tile__text">Знакомство с пространством, правила, праздники и программы.</p></div>
-          <div class="tile reveal"><span class="tile__emoji" aria-hidden="true">🌿</span><h3 class="tile__title">Санатории</h3><p class="tile__text">Спокойные сюжеты о здоровье, режиме и заботе без стресса.</p></div>
-          <div class="tile reveal"><span class="tile__emoji" aria-hidden="true">🏥</span><h3 class="tile__title">Клиники</h3><p class="tile__text">Подготовка к процедурам, снижение тревожности у детей и родителей.</p></div>
-          <div class="tile reveal"><span class="tile__emoji" aria-hidden="true">📚</span><h3 class="tile__title">Школы</h3><p class="tile__text">Проекты, безопасность, ценности и вовлечение семьи в образование.</p></div>
-          <div class="tile tile--wide reveal"><span class="tile__emoji" aria-hidden="true">🤝</span><h3 class="tile__title">Социальные проекты</h3><p class="tile__text">Доступные истории о важном: поддержка, инклюзия, экология и гражданская культура.</p></div>
-        </div>
+        <ul class="audience-list">
+          <li class="audience-item reveal">
+            <span class="audience-item__name">Детские центры</span>
+            <span class="audience-item__hint">Онбординг, программы, праздники.</span>
+          </li>
+          <li class="audience-item reveal">
+            <span class="audience-item__name">Санатории</span>
+            <span class="audience-item__hint">Спокойные сюжеты о режиме и заботе.</span>
+          </li>
+          <li class="audience-item reveal">
+            <span class="audience-item__name">Клиники</span>
+            <span class="audience-item__hint">Подготовка к процедурам без лишнего стресса.</span>
+          </li>
+          <li class="audience-item reveal">
+            <span class="audience-item__name">Школы</span>
+            <span class="audience-item__hint">Ценности, безопасность, вовлечение семьи.</span>
+          </li>
+          <li class="audience-item audience-item--full reveal">
+            <span class="audience-item__name">Социальные проекты</span>
+            <span class="audience-item__hint">Доступные истории о важном для аудитории.</span>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section class="section section--gradient" id="why">
+    <section class="section" id="why">
       <div class="container">
-        <div class="split reveal">
-          <div class="split__content">
-            <h2 class="section__title section__title--light">Почему выбирают нас</h2>
-            <p class="split__lead">Сочетаем технологии и человеческий взгляд — чтобы ролик был и красивым, и полезным для бизнеса.</p>
-            <ul class="checklist">
-              <li>Авторский подход к каждому проекту</li>
-              <li>Технологии нейросетей и человеческая режиссура</li>
-              <li>Внимание к эмоциям, атмосфере и смыслу</li>
-              <li>Соблюдаем сроки и держим планку качества</li>
-              <li>Мультфильм как инструмент продвижения, а не просто красивая картинка</li>
-            </ul>
-          </div>
-          <div class="split__panel" aria-hidden="true">
-            <div class="glass-panel">
-              <p class="glass-panel__quote">«Когда история тёплая — её хочется пересмотреть и рассказать другим.»</p>
-              <p class="glass-panel__note">САМОЛЁТ</p>
-            </div>
-          </div>
-        </div>
+        <header class="section__head section__head--left reveal">
+          <p class="section__label">Преимущества</p>
+          <h2 class="section__title">Почему выбирают нас</h2>
+        </header>
+        <ul class="list-pro reveal">
+          <li>Авторский подход к каждому проекту</li>
+          <li>Нейросети и человеческая режиссура</li>
+          <li>Внимание к эмоциям, атмосфере и смыслу</li>
+          <li>Сроки и качество</li>
+          <li>Мультфильм как инструмент продвижения, а не просто красивая картинка</li>
+        </ul>
       </div>
     </section>
 
-    <section class="section section--cream" id="process">
+    <section class="section section--muted" id="process">
       <div class="container">
         <header class="section__head reveal">
+          <p class="section__label">Процесс</p>
           <h2 class="section__title">Как мы работаем</h2>
-          <p class="section__subtitle">Прозрачный процесс от первого созвона до финального файла.</p>
         </header>
-        <ol class="steps">
-          <li class="step reveal">
-            <span class="step__num">1</span>
-            <div class="step__body">
-              <h3 class="step__title">Обсуждаем задачу бизнеса</h3>
-              <p class="step__text">Уточняем цели, аудиторию, площадки и ограничения — чтобы формат совпал с вашей стратегией.</p>
+        <ol class="process">
+          <li class="process__step reveal">
+            <span class="process__num">1</span>
+            <div class="process__body">
+              <h3 class="process__title">Обсуждаем задачу бизнеса</h3>
             </div>
           </li>
-          <li class="step reveal">
-            <span class="step__num">2</span>
-            <div class="step__body">
-              <h3 class="step__title">Создаём идею и сценарий</h3>
-              <p class="step__text">Продумываем посыл, героев и ритм истории так, чтобы он работал на доверие и понимание.</p>
+          <li class="process__step reveal">
+            <span class="process__num">2</span>
+            <div class="process__body">
+              <h3 class="process__title">Создаём идею и сценарий</h3>
             </div>
           </li>
-          <li class="step reveal">
-            <span class="step__num">3</span>
-            <div class="step__body">
-              <h3 class="step__title">Разрабатываем визуал и анимацию</h3>
-              <p class="step__text">Стыкуем нейросетевые инструменты с художественным контролем: стиль, движение, звук.</p>
+          <li class="process__step reveal">
+            <span class="process__num">3</span>
+            <div class="process__body">
+              <h3 class="process__title">Разрабатываем визуал и анимацию</h3>
             </div>
           </li>
-          <li class="step reveal">
-            <span class="step__num">4</span>
-            <div class="step__body">
-              <h3 class="step__title">Передаём готовый ролик</h3>
-              <p class="step__text">Финальные файлы для продвижения и работы с аудиторией — готовы к публикации.</p>
+          <li class="process__step reveal">
+            <span class="process__num">4</span>
+            <div class="process__body">
+              <h3 class="process__title">Передаём готовый ролик</h3>
             </div>
           </li>
         </ol>
@@ -200,32 +162,20 @@
     </section>
 
     <section class="section" id="about">
-      <div class="container narrow reveal">
-        <h2 class="section__title">О студии</h2>
-        <p class="about-text">САМОЛЁТ — это студия нейро мультипликации, где технологии и творчество работают вместе. Мы создаём мультфильмы, которые помогают брендам быть ближе к детям и родителям, говорить понятно, мягко и эмоционально. Для нас важно, чтобы каждый ролик не только красиво смотрелся, но и решал задачи бизнеса.</p>
+      <div class="container">
+        <div class="about-block reveal">
+          <h2 class="section__title">О студии</h2>
+          <p class="about-block__text">САМОЛЁТ — это студия нейро мультипликации, где технологии и творчество работают вместе. Мы создаём мультфильмы, которые помогают брендам быть ближе к детям и родителям, говорить понятно, мягко и эмоционально. Для нас важно, чтобы каждый ролик не только красиво смотрелся, но и решал задачи бизнеса.</p>
+        </div>
       </div>
     </section>
 
     <section class="section section--examples" id="examples">
-      <div class="container">
-        <header class="section__head reveal">
-          <h2 class="section__title">Примеры и портфолио</h2>
-          <p class="section__subtitle">Здесь появятся ваши будущие ролики. Пока — формат и настроение, с которым мы работаем.</p>
-        </header>
-        <div class="example-grid">
-          <div class="example-card reveal">
-            <div class="example-card__preview" aria-hidden="true"></div>
-            <p class="example-card__label">Корпоративный стиль · тёплый тон</p>
-          </div>
-          <div class="example-card reveal">
-            <div class="example-card__preview example-card__preview--b" aria-hidden="true"></div>
-            <p class="example-card__label">Образовательный нарратив</p>
-          </div>
-          <div class="example-card reveal">
-            <div class="example-card__preview example-card__preview--c" aria-hidden="true"></div>
-            <p class="example-card__label">Забота и спокойствие</p>
-          </div>
-        </div>
+      <div class="container examples-min reveal">
+        <p class="section__label">Портфолио</p>
+        <h2 class="examples-min__title">Примеры работ</h2>
+        <p class="examples-min__text">Релевантные референсы и кейсы показываем по запросу — подберём визуальный язык и формат под ваш бренд и нишу.</p>
+        <a href="#contact" class="link-text">Запросить презентацию →</a>
       </div>
     </section>
 
@@ -242,7 +192,7 @@
     <div class="container footer__grid">
       <div class="footer__brand">
         <p class="footer__name">САМОЛЁТ</p>
-        <p class="footer__tagline">Нейро мультипликация с душой и смыслом.</p>
+        <p class="footer__tagline">Нейро мультипликация для бизнеса.</p>
       </div>
       <div class="footer__contacts">
         <p class="footer__label">Контакты</p>
@@ -251,17 +201,11 @@
         <p class="footer__address">г. Москва, ул. Примерная, 1</p>
       </div>
       <div class="footer__social">
-        <p class="footer__label">Мы в сети</p>
+        <p class="footer__label">Соцсети</p>
         <div class="social">
-          <a href="#" class="social__link" aria-label="Telegram (заглушка)">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-          </a>
-          <a href="#" class="social__link" aria-label="VK (заглушка)">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.678.847 2.444 2.27 4.593 2.862 4.593.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.491-.085.744-.576.744z"/></svg>
-          </a>
-          <a href="#" class="social__link" aria-label="YouTube (заглушка)">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          </a>
+          <a href="#" class="social__link" aria-label="Telegram (заглушка)">TG</a>
+          <a href="#" class="social__link" aria-label="VK (заглушка)">VK</a>
+          <a href="#" class="social__link" aria-label="YouTube (заглушка)">YT</a>
         </div>
       </div>
     </div>
