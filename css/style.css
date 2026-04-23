@@ -297,6 +297,25 @@ a:hover {
 
 .hero__inner {
   position: relative;
+  max-width: none;
+}
+
+.hero__grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 38%);
+    gap: 3rem 3.5rem;
+    align-items: center;
+  }
+}
+
+.hero__textcol {
+  position: relative;
   max-width: 720px;
 }
 
@@ -312,6 +331,30 @@ a:hover {
 
 .hero__content {
   padding-left: 1.5rem;
+}
+
+.hero__figure {
+  margin: 0;
+  max-width: 420px;
+  width: 100%;
+  justify-self: center;
+}
+
+@media (min-width: 900px) {
+  .hero__figure {
+    justify-self: end;
+    max-width: none;
+  }
+}
+
+.hero__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+  background: var(--bg-milk);
 }
 
 .hero__title {
