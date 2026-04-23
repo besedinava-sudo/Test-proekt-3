@@ -20,6 +20,7 @@
           <li><a href="#benefits" class="nav__link">Польза</a></li>
           <li><a href="#audience" class="nav__link">Для кого</a></li>
           <li><a href="#process" class="nav__link">Этапы</a></li>
+          <li><a href="#testimonials" class="nav__link">Отзывы</a></li>
           <li><a href="#contact" class="nav__link">Контакты</a></li>
         </ul>
       </nav>
@@ -176,6 +177,36 @@
         <h2 class="examples-min__title">Примеры работ</h2>
         <p class="examples-min__text">Релевантные референсы и кейсы показываем по запросу — подберём визуальный язык и формат под ваш бренд и нишу.</p>
         <a href="#contact" class="link-text">Запросить презентацию →</a>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="section__label">Отзывы</p>
+          <h2 class="section__title">Клиенты о совместной работе</h2>
+          <p class="section__intro">Коротко о том, как мультфильмы студии «САМОЛЁТ» помогают бизнесу быть ближе к детям и родителям.</p>
+        </header>
+        <div
+          class="testimonials reveal"
+          id="testimonials-root"
+          role="region"
+          aria-roledescription="карусель"
+          aria-label="Отзывы клиентов студии САМОЛЁТ"
+        >
+          <ul class="testimonials__static testimonials__static--hide" id="testimonials-static" aria-label="Отзывы — упрощённый вид"></ul>
+          <div class="testimonials__viewport" id="testimonials-viewport" hidden>
+            <div class="testimonials__track" id="testimonials-track" aria-live="polite"></div>
+            <div class="testimonials__nav">
+              <button type="button" class="testimonials__btn" id="testimonials-prev" aria-label="Предыдущий отзыв">
+                <svg class="testimonials__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+              </button>
+              <button type="button" class="testimonials__btn" id="testimonials-next" aria-label="Следующий отзыв">
+                <svg class="testimonials__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
