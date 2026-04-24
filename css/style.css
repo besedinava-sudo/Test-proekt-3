@@ -101,6 +101,9 @@ a:hover {
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
   margin-right: auto;
   font-weight: 700;
   font-size: 0.9375rem;
@@ -108,8 +111,51 @@ a:hover {
   color: var(--text);
 }
 
+.logo__mark-wrap {
+  position: relative;
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+  border-radius: 50%;
+}
+
+.logo__mark-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-color: var(--accent-blue);
+  opacity: 0;
+  mix-blend-mode: color;
+  transition: opacity 0.2s var(--ease);
+  pointer-events: none;
+}
+
+.logo:hover .logo__mark-wrap::after {
+  opacity: 1;
+}
+
+.logo__mark {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 50%;
+}
+
 .logo:hover {
   color: var(--accent-blue);
+}
+
+.logo:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 .nav__list {
