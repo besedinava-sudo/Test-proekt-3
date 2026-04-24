@@ -87,58 +87,6 @@
     });
   }
 
-  /* Герой: эффект набора заголовка (аналог TextType, без React/GSAP) */
-  var heroTitleTypeEl = document.getElementById("hero-title-type");
-  var heroContent = document.querySelector(".hero__content");
-  var heroCursor = document.querySelector(".hero__title .text-type__cursor");
-  var heroTypeText = "САМОЛЁТ — студия нейро мультипликации";
-
-  function heroReducedMotion() {
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  }
-
-  function startHeroTitleTyping() {
-    if (!heroTitleTypeEl) return;
-    if (heroReducedMotion()) {
-      heroTitleTypeEl.textContent = heroTypeText;
-      if (heroCursor) {
-        heroCursor.classList.add("is-hidden");
-      }
-      return;
-    }
-
-    var typingSpeed = 72;
-    var initialDelay = 320;
-    var i = 0;
-    var timer;
-
-    function tick() {
-      if (i < heroTypeText.length) {
-        heroTitleTypeEl.textContent += heroTypeText.charAt(i);
-        i += 1;
-        timer = window.setTimeout(tick, typingSpeed);
-      }
-    }
-
-    timer = window.setTimeout(function () {
-      tick();
-    }, initialDelay);
-  }
-
-  if (heroTitleTypeEl && heroContent) {
-    if (heroContent.classList.contains("is-visible")) {
-      startHeroTitleTyping();
-    } else {
-      var heroMo = new MutationObserver(function () {
-        if (heroContent.classList.contains("is-visible")) {
-          heroMo.disconnect();
-          startHeroTitleTyping();
-        }
-      });
-      heroMo.observe(heroContent, { attributes: true, attributeFilter: ["class"] });
-    }
-  }
-
   /* Отзывы: карусель в духе stagger-компонента */
   var testimonialsRoot = document.getElementById("testimonials-root");
   var testimonialsTrack = document.getElementById("testimonials-track");

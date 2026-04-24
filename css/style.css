@@ -348,15 +348,14 @@ a:hover {
 
 .hero__grid {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 2.5rem;
-  align-items: center;
+  align-items: start;
 }
 
 @media (min-width: 900px) {
   .hero__grid {
-    grid-template-columns: minmax(0, 1fr) minmax(240px, 38%);
-    gap: 3rem 3.5rem;
-    align-items: center;
+    gap: 3rem;
   }
 }
 
@@ -377,26 +376,24 @@ a:hover {
 
 .hero__figure {
   margin: 0;
-  max-width: 420px;
   width: 100%;
-  justify-self: center;
-}
-
-@media (min-width: 900px) {
-  .hero__figure {
-    justify-self: end;
-    max-width: none;
-  }
+  max-width: 100%;
+  justify-self: stretch;
 }
 
 .hero__img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: var(--radius);
   border: 1px solid var(--line);
   box-shadow: var(--shadow-card);
   background: var(--bg-milk);
+}
+
+video.hero__img {
+  pointer-events: none;
 }
 
 .sr-only {
@@ -409,66 +406,6 @@ a:hover {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-.hero__title {
-  margin: 0 0 1rem;
-  padding: 0;
-  font-size: clamp(1.625rem, 4.2vw, 2.125rem);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-  color: var(--text);
-  text-align: left;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-}
-
-.hero__title-type.text-type {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  text-align: left;
-  white-space: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  margin: 0;
-  padding: 0;
-}
-
-.hero__title .text-type__cursor {
-  margin-left: 0.12em;
-  display: inline-block;
-  font-weight: 400;
-  color: var(--accent-blue);
-  animation: text-type-cursor-blink 0.5s ease-in-out infinite alternate;
-}
-
-.hero__title .text-type__content:empty + .text-type__cursor {
-  margin-left: 0;
-}
-
-.hero__title .text-type__cursor.is-hidden {
-  display: none;
-}
-
-@keyframes text-type-cursor-blink {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0.2;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero__title .text-type__cursor {
-    animation: none;
-    opacity: 1;
-  }
 }
 
 .hero__lead {
