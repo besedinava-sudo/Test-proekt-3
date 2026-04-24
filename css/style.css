@@ -403,13 +403,60 @@ a:hover {
   background: var(--bg-milk);
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .hero__title {
-  margin: 0 0 1.25rem;
+  /* Подтягиваем к голубой полосе: padding контента 1.5rem, полоса 3px, зазор ~0.5rem после полосы */
+  margin: 0 0 1.25rem calc(3px + 0.5rem - 1.5rem);
   font-size: clamp(1.625rem, 4.2vw, 2.125rem);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.03em;
   color: var(--text);
+}
+
+.hero__title-type.text-type {
+  display: inline;
+  white-space: pre-wrap;
+}
+
+.hero__title .text-type__cursor {
+  margin-left: 0.12em;
+  display: inline-block;
+  font-weight: 400;
+  color: var(--accent-blue);
+  animation: text-type-cursor-blink 0.5s ease-in-out infinite alternate;
+}
+
+.hero__title .text-type__cursor.is-hidden {
+  display: none;
+}
+
+@keyframes text-type-cursor-blink {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__title .text-type__cursor {
+    animation: none;
+    opacity: 1;
+  }
 }
 
 .hero__lead {
@@ -490,6 +537,56 @@ a:hover {
 }
 
 /* Benefits */
+.benefits__figure {
+  margin: 0 auto 2.25rem;
+  max-width: 440px;
+  width: 100%;
+}
+
+.benefits__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+  background: var(--bg-milk);
+}
+
+@media (min-width: 900px) {
+  .benefits__figure {
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.why__figure {
+  margin: 0 auto 2.25rem;
+  max-width: 440px;
+  width: 100%;
+}
+
+.why__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+  background: var(--bg-milk);
+}
+
+@media (min-width: 900px) {
+  .why__figure {
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+}
+
+#why .list-pro {
+  margin-inline: auto;
+}
+
 .grid-benefits {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -708,13 +805,30 @@ a:hover {
 
 /* About */
 .about-block {
-  max-width: 680px;
+  max-width: min(920px, 100%);
   margin: 0 auto;
   text-align: center;
 }
 
 .about-block .section__title {
   margin-bottom: 1.25rem;
+}
+
+.about-block__figure {
+  margin: 0 0 1.75rem;
+  padding: 0;
+  background: transparent;
+}
+
+.about-block__img {
+  display: block;
+  width: 100%;
+  max-width: 880px;
+  height: auto;
+  margin-inline: auto;
+  object-fit: contain;
+  background: transparent;
+  /* без рамки и карточной подложки — как вырезка с прозрачным фоном (если в файле есть альфа) */
 }
 
 .about-block__text {
