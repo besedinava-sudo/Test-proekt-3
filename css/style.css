@@ -362,10 +362,17 @@ a:hover {
 
 .hero__textcol {
   max-width: 720px;
+  justify-self: start;
+  width: 100%;
 }
 
 .hero__content {
-  padding-left: 0;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .hero__figure {
@@ -405,24 +412,30 @@ a:hover {
 }
 
 .hero__title {
-  margin: 0 0 1.25rem;
+  margin: 0 0 1rem;
   padding: 0;
   font-size: clamp(1.625rem, 4.2vw, 2.125rem);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.03em;
   color: var(--text);
-  text-align: start;
+  text-align: left;
   width: 100%;
   max-width: 100%;
+  min-width: 0;
 }
 
 .hero__title-type.text-type {
   display: block;
   width: 100%;
   max-width: 100%;
-  text-align: start;
-  white-space: pre-wrap;
+  text-align: left;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
+  padding: 0;
 }
 
 .hero__title .text-type__cursor {
@@ -465,7 +478,8 @@ a:hover {
   font-weight: 500;
   line-height: 1.5;
   color: var(--text-secondary);
-  text-align: start;
+  text-align: left;
+  text-indent: 0;
 }
 
 .hero__text {
@@ -474,6 +488,8 @@ a:hover {
   font-size: 1rem;
   color: var(--text-muted);
   line-height: 1.65;
+  text-align: left;
+  text-indent: 0;
 }
 
 .hero__actions {
