@@ -36,7 +36,7 @@
           <li><a href="#contact" class="nav__link">Контакты</a></li>
         </ul>
       </nav>
-      <a href="#contact" class="btn btn--header header__cta">Оставить заявку</a>
+      <button type="button" class="btn btn--header header__cta" data-lead-open>Оставить заявку</button>
       <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню">
         <span class="burger__line"></span>
         <span class="burger__line"></span>
@@ -69,7 +69,7 @@
               <p class="hero__lead">Создаём мультики, которые помогают бизнесу говорить с детьми и родителями на языке эмоций.</p>
               <p class="hero__text">Мы объединяем технологии нейросетей и авторский подход, чтобы каждый ролик был не просто красивым, а рабочим инструментом продвижения.</p>
               <div class="hero__actions">
-                <a href="#contact" class="btn btn--primary">Оставить заявку</a>
+                <button type="button" class="btn btn--primary" data-lead-open>Оставить заявку</button>
                 <a href="#examples" class="btn btn--outline">Посмотреть примеры</a>
               </div>
             </div>
@@ -319,16 +319,37 @@
       </div>
       <div class="footer__contacts">
         <p class="footer__label">Контакты</p>
-        <a href="tel:+78000000000">+7 (800) 000-00-00</a>
-        <a href="mailto:hello@samolet-studio.ru">hello@samolet-studio.ru</a>
+        <a
+          href="https://t.me/vera_besedina"
+          class="footer__extlink"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Telegram</a>
+        <a
+          href="https://vk.com/vera_besedina"
+          class="footer__extlink"
+          target="_blank"
+          rel="noopener noreferrer"
+        >ВКонтакте</a>
         <p class="footer__address">г. Москва, ул. Примерная, 1</p>
       </div>
       <div class="footer__social">
         <p class="footer__label">Соцсети</p>
         <div class="social">
-          <a href="#" class="social__link" aria-label="Telegram (заглушка)">TG</a>
-          <a href="#" class="social__link" aria-label="VK (заглушка)">VK</a>
-          <a href="#" class="social__link" aria-label="YouTube (заглушка)">YT</a>
+          <a
+            href="https://t.me/samoletstudio"
+            class="social__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Telegram — студия САМОЛЁТ"
+          >TG</a>
+          <a
+            href="https://vk.com/samoletstudio"
+            class="social__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="ВКонтакте — студия САМОЛЁТ"
+          >VK</a>
         </div>
       </div>
     </div>
@@ -337,6 +358,122 @@
     </div>
   </footer>
 
+  <div
+    class="lead-modal"
+    id="lead-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="lead-modal-title"
+  >
+    <div class="lead-modal__backdrop" data-lead-close aria-hidden="true"></div>
+    <div class="lead-modal__panel">
+      <button
+        type="button"
+        class="lead-modal__close"
+        data-lead-close
+        aria-label="Закрыть"
+      >
+        <span aria-hidden="true">
+          <svg class="lead-modal__close-ico" viewBox="0 0 24 24" width="20" height="20" focusable="false">
+            <path
+              fill="currentColor"
+              d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
+            />
+          </svg>
+        </span>
+      </button>
+
+      <div class="lead-modal__inner" id="lead-panel-inner">
+        <div class="lead-modal__header">
+          <p class="lead-modal__kicker">САМОЛЁТ</p>
+          <h2 class="lead-modal__title" id="lead-modal-title">Заявка на проект</h2>
+          <p class="lead-modal__sub">Расскажите о вашей задаче - подскажем лучшее решение</p>
+        </div>
+
+        <form class="lead-form" id="lead-form" novalidate>
+          <p class="lead-form__error lead-form__error--global" id="lead-form-global" role="alert" hidden></p>
+
+          <div class="lead-form__field">
+            <label for="lead-name" class="lead-form__label">Имя <span class="lead-form__req">*</span></label>
+            <input
+              class="lead-form__input"
+              type="text"
+              name="name"
+              id="lead-name"
+              autocomplete="name"
+              required
+            >
+            <p class="lead-form__hint" id="lead-name-err" role="status" hidden>Укажите, как к вам обращаться</p>
+          </div>
+
+          <div class="lead-form__field">
+            <label for="lead-contact" class="lead-form__label">Телефон или Telegram <span class="lead-form__req">*</span></label>
+            <input
+              class="lead-form__input"
+              type="text"
+              name="phone_or_telegram"
+              id="lead-contact"
+              inputmode="tel"
+              autocomplete="tel"
+              placeholder="+7 (999) 000-00-00 или @username"
+            >
+            <p class="lead-form__hint" id="lead-contact-err" role="status" hidden>Нужен номер или ник в Telegram</p>
+          </div>
+
+          <div class="lead-form__field">
+            <label for="lead-type" class="lead-form__label">Тип проекта / услуги</label>
+            <div class="lead-form__select-wrap">
+              <select class="lead-form__input lead-form__select" name="project_type" id="lead-type">
+                <option value="">Выберите вариант (необязательно)</option>
+                <option>Мультик для бизнеса</option>
+                <option>Герой бренда</option>
+                <option>AI-видео</option>
+                <option>Консультация</option>
+                <option>Другое</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="lead-form__field">
+            <label for="lead-comment" class="lead-form__label">Комментарий</label>
+            <textarea
+              class="lead-form__input lead-form__textarea"
+              name="comment"
+              id="lead-comment"
+              rows="4"
+              placeholder="Задача, сроки, ссылка на бренд…"
+            ></textarea>
+          </div>
+
+          <!-- hCaptcha: в панели web3forms.com включите Block spam → hCaptcha для этого access key -->
+          <div class="lead-form__field lead-form__field--captcha" id="lead-captcha-field">
+            <p class="lead-form__captcha-label" id="lead-captcha-label">Защита от спама <span class="lead-form__req" aria-hidden="true">*</span></p>
+            <div
+              class="lead-form__captcha"
+              id="lead-captcha-container"
+              role="group"
+              aria-labelledby="lead-captcha-label"
+            >
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn--primary lead-form__submit" id="lead-submit">
+            <span class="lead-form__btn-text">Отправить</span>
+            <span class="lead-form__btn-sending" hidden>Отправляем…</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="lead-modal__success" id="lead-success" hidden>
+        <p class="lead-modal__success-kicker" aria-hidden="true">САМОЛЁТ</p>
+        <p class="lead-modal__success-text" id="lead-success-message">Спасибо! Заявка отправлена</p>
+        <button type="button" class="btn btn--outline lead-modal__success-back" data-lead-close>Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://js.hcaptcha.com/1/api.js?hl=ru" async defer></script>
   <script src="js/main.js"></script>
 </body>
 </html>

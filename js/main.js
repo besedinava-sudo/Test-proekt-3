@@ -87,6 +87,367 @@
     });
   }
 
+  /* ——— Заявка: Web3Forms + модальное окно */
+  var WEB3_ACCESS_KEY = "bf97d426-1910-4b2f-8b64-d854e9dcf438";
+  var WEB3_ENDPOINT = "https://api.web3forms.com/submit";
+  var HCAPTCHA_SITEKEY = "50b2fe65-b00b-4b9e-ad62-3ba471098be2";
+  var leadModal = document.getElementById("lead-modal");
+  var leadForm = document.getElementById("lead-form");
+  var leadPanelInner = document.getElementById("lead-panel-inner");
+  var leadSuccess = document.getElementById("lead-success");
+  var leadGlobal = document.getElementById("lead-form-global");
+  var leadName = document.getElementById("lead-name");
+  var leadContact = document.getElementById("lead-contact");
+  var leadType = document.getElementById("lead-type");
+  var leadComment = document.getElementById("lead-comment");
+  var leadSubmit = document.getElementById("lead-submit");
+  var leadBtnText = leadSubmit && leadSubmit.querySelector(".lead-form__btn-text");
+  var leadBtnSend = leadSubmit && leadSubmit.querySelector(".lead-form__btn-sending");
+  var leadNameErr = document.getElementById("lead-name-err");
+  var leadContactErr = document.getElementById("lead-contact-err");
+  var leadOpeners = document.querySelectorAll("[data-lead-open]");
+  var leadClosers = document.querySelectorAll("[data-lead-close]");
+
+  var lastLeadFocus = null;
+  var bodyScrollPrev = "";
+  var hCaptchaWidgetId = null;
+  var leadCaptchaContainer = document.getElementById("lead-captcha-container");
+
+  function setInertOnModal(value) {
+    if (!leadModal) return;
+    if ("inert" in leadModal) {
+      leadModal.inert = value;
+    }
+  }
+
+  function showFieldError(nameEl, errEl, show) {
+    if (!nameEl) return;
+    if (errEl) {
+      errEl.hidden = !show;
+    }
+    nameEl.setAttribute("aria-invalid", show ? "true" : "false");
+  }
+
+  function clearFieldErrors() {
+    showFieldError(leadName, leadNameErr, false);
+    showFieldError(leadContact, leadContactErr, false);
+  }
+
+  function setGlobalError(text) {
+    if (!leadGlobal) return;
+    if (text) {
+      leadGlobal.textContent = text;
+      leadGlobal.removeAttribute("hidden");
+    } else {
+      leadGlobal.textContent = "";
+      leadGlobal.setAttribute("hidden", "");
+    }
+  }
+
+  function setSubmitting(is) {
+    if (!leadSubmit || !leadBtnText || !leadBtnSend) return;
+    leadSubmit.disabled = is;
+    leadBtnText.hidden = is;
+    leadBtnSend.hidden = !is;
+  }
+
+  function resetLeadHCaptcha() {
+    if (hCaptchaWidgetId === null || !window.hcaptcha) {
+      return;
+    }
+    try {
+      window.hcaptcha.reset(hCaptchaWidgetId);
+    } catch (e) {
+      // ignore
+    }
+  }
+
+  function getLeadHCaptchaResponse() {
+    if (hCaptchaWidgetId === null || !window.hcaptcha) {
+      return "";
+    }
+    try {
+      return String(window.hcaptcha.getResponse(hCaptchaWidgetId) || "");
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function initLeadHCaptcha() {
+    if (!leadCaptchaContainer) {
+      return;
+    }
+    var doRender = function () {
+      if (!window.hcaptcha) {
+        return;
+      }
+      if (hCaptchaWidgetId === null) {
+        hCaptchaWidgetId = window.hcaptcha.render(leadCaptchaContainer, {
+          sitekey: HCAPTCHA_SITEKEY,
+          hl: "ru",
+          theme: "light",
+        });
+      }
+    };
+
+    if (window.hcaptcha) {
+      doRender();
+      return;
+    }
+
+    var n = 0;
+    var poll = setInterval(function () {
+      n += 1;
+      if (window.hcaptcha) {
+        clearInterval(poll);
+        doRender();
+        return;
+      }
+      if (n >= 100) {
+        clearInterval(poll);
+        if (hCaptchaWidgetId === null && leadGlobal) {
+          setGlobalError("Не удалось загрузить проверку. Обновите страницу и попробуйте снова.");
+        }
+      }
+    }, 50);
+  }
+
+  function showLeadSuccessView() {
+    if (leadPanelInner) {
+      leadPanelInner.setAttribute("hidden", "");
+    }
+    if (leadSuccess) {
+      leadSuccess.removeAttribute("hidden");
+    }
+    if (leadModal) {
+      leadModal.setAttribute("aria-labelledby", "lead-success-message");
+    }
+  }
+
+  function showLeadFormView() {
+    if (leadSuccess) {
+      leadSuccess.setAttribute("hidden", "");
+    }
+    if (leadPanelInner) {
+      leadPanelInner.removeAttribute("hidden");
+    }
+    if (leadModal) {
+      leadModal.setAttribute("aria-labelledby", "lead-modal-title");
+    }
+  }
+
+  function resetLeadModal() {
+    showLeadFormView();
+    if (leadForm) {
+      leadForm.reset();
+    }
+    clearFieldErrors();
+    setGlobalError("");
+    setSubmitting(false);
+    resetLeadHCaptcha();
+  }
+
+  function openLeadModal() {
+    if (!leadModal) return;
+    if (header && window.matchMedia("(max-width: 900px)").matches && nav && nav.classList.contains("is-open")) {
+      if (typeof closeNav === "function") {
+        closeNav();
+      } else {
+        if (burger) {
+          burger.setAttribute("aria-expanded", "false");
+        }
+        nav.classList.remove("is-open");
+        document.body.style.overflow = "";
+      }
+    }
+    lastLeadFocus = document.activeElement;
+    resetLeadModal();
+    setInertOnModal(false);
+    leadModal.setAttribute("aria-hidden", "false");
+    leadModal.classList.add("is-open");
+    bodyScrollPrev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.setTimeout(function () {
+      if (leadName) {
+        leadName.focus();
+      } else if (leadSubmit) {
+        leadSubmit.focus();
+      }
+    }, 0);
+    window.setTimeout(function () {
+      initLeadHCaptcha();
+    }, 80);
+  }
+
+  function closeLeadModal() {
+    if (!leadModal) return;
+    if (!leadModal.classList.contains("is-open")) return;
+    leadModal.setAttribute("aria-hidden", "true");
+    leadModal.classList.remove("is-open");
+    setInertOnModal(true);
+    document.body.style.overflow = bodyScrollPrev;
+    resetLeadModal();
+    if (lastLeadFocus && typeof lastLeadFocus.focus === "function") {
+      try {
+        lastLeadFocus.focus();
+      } catch (e) {
+        // ignore
+      }
+    }
+    lastLeadFocus = null;
+  }
+
+  function validateLead() {
+    var name = leadName && leadName.value ? leadName.value.trim() : "";
+    var contact = leadContact && leadContact.value ? leadContact.value.trim() : "";
+    var ok = true;
+    if (!name) {
+      showFieldError(leadName, leadNameErr, true);
+      ok = false;
+    } else {
+      showFieldError(leadName, leadNameErr, false);
+    }
+    if (!contact) {
+      showFieldError(leadContact, leadContactErr, true);
+      ok = false;
+    } else {
+      showFieldError(leadContact, leadContactErr, false);
+    }
+    return ok;
+  }
+
+  if (leadModal) {
+    setInertOnModal(true);
+  }
+
+  leadOpeners.forEach(function (el) {
+    el.addEventListener("click", function (e) {
+      e.preventDefault();
+      openLeadModal();
+    });
+  });
+
+  leadClosers.forEach(function (el) {
+    el.addEventListener("click", function () {
+      closeLeadModal();
+    });
+  });
+
+  if (leadForm) {
+    leadForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!leadName || !leadContact) return;
+      setGlobalError("");
+      clearFieldErrors();
+      if (!validateLead()) {
+        return;
+      }
+      var resCaps = getLeadHCaptchaResponse();
+      if (!resCaps) {
+        setGlobalError("Пройдите проверку «я не робот».");
+        return;
+      }
+      setSubmitting(true);
+      var nameV = leadName.value.trim();
+      var contactV = leadContact.value.trim();
+      var typeV = leadType && leadType.value ? String(leadType.value) : "";
+      if (!typeV && leadType && leadType.options && leadType.selectedIndex > 0) {
+        typeV = leadType.options[leadType.selectedIndex].textContent.trim();
+      }
+      var commV = leadComment && leadComment.value ? leadComment.value.trim() : "";
+      var lines = ["Телефон / Telegram: " + contactV];
+      if (typeV) {
+        lines.push("Тип: " + typeV);
+      }
+      if (commV) {
+        lines.push("Комментарий: " + commV);
+      }
+      var body = {
+        access_key: WEB3_ACCESS_KEY,
+        subject: "САМОЛЁТ — заявка с сайта",
+        from_name: nameV,
+        name: nameV,
+        message: lines.join("\n"),
+      };
+      if (typeV) {
+        body.project_type = typeV;
+      }
+      if (commV) {
+        body.comment = commV;
+      }
+      body["h-captcha-response"] = resCaps;
+      fetch(WEB3_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(body),
+      })
+        .then(function (res) {
+          return res.text().then(function (text) {
+            var data = null;
+            try {
+              data = text ? JSON.parse(text) : {};
+            } catch (err) {
+              data = {};
+            }
+            return { ok: res.ok, data: data };
+          });
+        })
+        .then(function (result) {
+          setSubmitting(false);
+          if (result && result.data && result.data.success === true) {
+            if (leadForm) {
+              leadForm.reset();
+            }
+            clearFieldErrors();
+            setGlobalError("");
+            resetLeadHCaptcha();
+            showLeadSuccessView();
+            window.setTimeout(function () {
+              var okBtn = leadSuccess && leadSuccess.querySelector(".lead-modal__success-back");
+              if (okBtn && typeof okBtn.focus === "function") {
+                okBtn.focus();
+              }
+            }, 0);
+            return;
+          }
+          setGlobalError("Что-то пошло не так. Попробуйте ещё раз");
+          resetLeadHCaptcha();
+        })
+        .catch(function () {
+          setSubmitting(false);
+          setGlobalError("Что-то пошло не так. Попробуйте ещё раз");
+          resetLeadHCaptcha();
+        });
+    });
+  }
+
+  if (leadModal) {
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && leadModal.classList.contains("is-open")) {
+        e.preventDefault();
+        closeLeadModal();
+      }
+    });
+  }
+
+  if (leadName) {
+    leadName.addEventListener("input", function () {
+      if (leadName.getAttribute("aria-invalid") === "true" && leadName.value.trim()) {
+        showFieldError(leadName, leadNameErr, false);
+      }
+    });
+  }
+  if (leadContact) {
+    leadContact.addEventListener("input", function () {
+      if (leadContact.getAttribute("aria-invalid") === "true" && leadContact.value.trim()) {
+        showFieldError(leadContact, leadContactErr, false);
+      }
+    });
+  }
+
   /* Отзывы: карусель в духе stagger-компонента */
   var testimonialsRoot = document.getElementById("testimonials-root");
   var testimonialsTrack = document.getElementById("testimonials-track");
