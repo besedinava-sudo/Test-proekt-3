@@ -552,6 +552,29 @@ video.hero__img {
 }
 
 /* Audience */
+.audience__figure {
+  margin: 0 auto 2.25rem;
+  max-width: 440px;
+  width: 100%;
+}
+
+.audience__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+  background: var(--bg-milk);
+}
+
+@media (min-width: 900px) {
+  .audience__figure {
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+}
+
 .audience-list {
   list-style: none;
   margin: 0;
@@ -1093,6 +1116,28 @@ video.hero__img {
   max-width: 520px;
   text-align: center;
   margin: 0 auto;
+}
+
+.cta__figure {
+  margin: 0 auto 1.5rem;
+  max-width: 100%;
+  width: 100%;
+}
+
+.cta__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+  background: var(--bg);
+}
+
+@media (min-width: 600px) {
+  .cta__inner {
+    max-width: 560px;
+  }
 }
 
 .cta__title {
